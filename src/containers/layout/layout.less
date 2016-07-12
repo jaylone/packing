@@ -1,0 +1,102 @@
+@qunarblue: #1baeba;
+
+.layout {
+
+}
+
+.frame-container {
+  border: 1px solid transparent;
+}
+
+.header {
+  font-size: 15px;
+  height: 55px;
+  background-color: #fff;
+  border-bottom: 3px solid #eee;
+
+  .content {
+    margin: 0 auto;
+    width: 950px;
+
+    .logo {
+      display: inline-block;
+      width: 250px;
+      height: 50px;
+      background: url("http://jspatch.com/Public/img/logo@2x.png") no-repeat;
+      background-size: 250px 50px;
+    }
+
+    .menu {
+      float: right;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 100;
+        font-size: 15px;
+        color: @qunarblue;
+        text-align: center;
+
+        &:hover {
+          color: #ff9900;
+          border-bottom: 3px solid @qunarblue;
+        }
+
+        a {
+          text-decoration: none;
+          color: @qunarblue;
+          height: 55px;
+          width: 76px;
+          line-height: 55px;
+          display: inline-block;
+
+          &:hover {
+            color: #ff9900;
+          }
+        }
+      }
+
+      .active {
+        cursor: default;
+        color: #ff9900;
+        border-bottom: 3px solid @qunarblue;
+
+        a {
+          cursor: default;
+          color: #ff9900;
+        }
+      }
+    }
+  }
+}
+
+// #root  -- id
+//.button -- className
+.footer {
+  text-align: center;
+  background-color: #333333;
+  padding: 30px 0 20px 0;
+  margin: 0;
+  height: 60px;
+
+  span {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 30px;
+  }
+}
+
+
+code {
+  box-sizing: border-box;
+  padding: 2px 6px;
+  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+  font-size: 85%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}

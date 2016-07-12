@@ -26,18 +26,19 @@ const cwd = process.cwd();
  * 根据文件的目录结构生成entry配置
  */
 const initConfig = () => {
-  const jsExt = '.js';
+  // const jsExt = '.js';
   const entryConfig = {};
 
   glob.sync(`**/*${templateExtension}`, {
     cwd: path.resolve(cwd, templatesPages)
   }).forEach(page => {
     const key = page.replace(templateExtension, '');
-    const value = `./${entries}/${page.replace(templateExtension, jsExt)}`;
+    const value = `./${entries}/${key}/entry.js`;
 
     // 写入页面级别的配置
     entryConfig[key] = value;
   });
+  // console.log(entryConfig);
   return entryConfig;
 };
 

@@ -46,7 +46,7 @@ const initConfig = () => {
     cwd: path.resolve(cwd, templatesPages)
   }).forEach(page => {
     const key = page.replace(templateExtension, '');
-    const value = `./${entries}/${page.replace(templateExtension, jsExt)}`;
+    const value = `./${entries}/${key}/entry.js`;
 
     // 写入页面级别的配置
     entryConfig[key] = value;
@@ -87,13 +87,13 @@ const webpackConfig = (options) => {
     path: assetsPath,
     // dev环境下数据流访问地址
     publicPath: '',
-    // publicPath: '/assets/'
+    // publicPath: '/js/'
   };
 
   /* eslint-disable */
   let moduleConfig = {
     loaders: [
-      { test: /\.js?$/, loaders: ['babel', 'eslint'], exclude: /node_modules/},
+      { test: /\.js?$/, loaders: ['babel', /*'eslint'*/], exclude: /node_modules/},
       { test: /\.less$/, loader: 'style!css?importLoaders=2&localIdentName=[local]___[hash:base64:8]!postcss!less?outputStyle=expanded' },
       { test: /\.scss$/, loader: 'style!css?importLoaders=2&localIdentName=[local]___[hash:base64:8]!postcss!sass?outputStyle=expanded' },
       { test: /\.json$/, loader: 'json' },
@@ -137,6 +137,20 @@ const webpackConfig = (options) => {
     //   loader: 'react-hot',
     //   exclude: nodeModuleReg
     // });
+  }
+
+
+  // 从配置文件中获取并生成webpack打包配置
+  if (packing.commonChunks) {
+    const chunkKeys = Object.keys(packing.commonChunks);
+    chunkKeys.forEach((key) => {
+      entry[key] = packing.commonChunks[key];
+    });
+
+    // 扩展阅读 http://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
+    plugins.push(
+      new webpack.optimize.CommonsChunkPlugin({ names: chunkKeys })
+    );
   }
 
   return {
