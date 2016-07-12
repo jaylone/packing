@@ -93,7 +93,7 @@ const webpackConfig = (options) => {
   /* eslint-disable */
   let moduleConfig = {
     loaders: [
-      { test: /\.js?$/, loaders: ['babel', /*'eslint'*/], exclude: /node_modules/},
+      { test: /\.js?$/, loaders: ['babel', 'eslint'], exclude: /node_modules/},
       { test: /\.less$/, loader: 'style!css?importLoaders=2&localIdentName=[local]___[hash:base64:8]!postcss!less?outputStyle=expanded' },
       { test: /\.scss$/, loader: 'style!css?importLoaders=2&localIdentName=[local]___[hash:base64:8]!postcss!sass?outputStyle=expanded' },
       { test: /\.json$/, loader: 'json' },
