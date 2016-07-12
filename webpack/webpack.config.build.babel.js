@@ -141,11 +141,25 @@ const webpackConfig = (options) => {
 
     new RevWebpackPlugin({
       cwd: assets,
-      src: '**/*.{jpg,png}',
+      src: '**/*',
       dest: assetsDist,
     }),
 
   ];
+
+  // 从配置文件中获取并生成webpack打包配置
+  if (packing.commonChunks) {
+    const chunkKeys = Object.keys(packing.commonChunks);
+    chunkKeys.forEach((key) => {
+      entry[key] = packing.commonChunks[key];
+    });
+
+    // 扩展阅读 http://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
+    plugins.push(
+      new webpack.optimize.CommonsChunkPlugin({ names: chunkKeys })
+    );
+  }
+
 
   if (options.minimize) {
     plugins.push(
