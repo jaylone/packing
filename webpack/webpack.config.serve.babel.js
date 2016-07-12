@@ -46,7 +46,7 @@ const initConfig = () => {
     cwd: path.resolve(cwd, templatesPages)
   }).forEach(page => {
     const key = page.replace(templateExtension, '');
-    const value = `./${entries}/${key}/entry.js`;
+    const value = path.resolve(cwd, entries.replace('{pagename}', key));
 
     // 写入页面级别的配置
     entryConfig[key] = value;

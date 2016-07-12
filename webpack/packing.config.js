@@ -8,7 +8,7 @@ export default {
     // 页面初始化mock数据文件存放目录
     mockPageInit: 'mock/pages',
     // webpack打包入口JS文件目录
-    entries: 'src/containers',
+    entries: 'src/containers/{pagename}/entry.js',
     // 模版目录，可能包含布局框架和页面级别模版
     templates: 'src/templates',
     // 网页级别模版目录
