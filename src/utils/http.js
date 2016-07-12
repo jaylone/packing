@@ -1,6 +1,6 @@
 'use strict';
 
-import ajax from 'ajax';
+import ajax from 'packing-ajax';
 
 let api = (url, params) => {
   return new Promise((resolve, reject) => {
