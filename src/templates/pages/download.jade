@@ -3,8 +3,11 @@ extends ../layout/default.jade
 block title
   title 下载
 
+block append style
+  link(rel="stylesheet" href="download.css")
+
 block content
   #root
 
 block append script
-  script(src="/js/download.js")
+  script(src="download.js")
